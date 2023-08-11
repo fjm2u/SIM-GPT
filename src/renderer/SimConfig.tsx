@@ -201,14 +201,17 @@ export default function SimConfig({
         ...project,
         prePrompt: `There are {characterCount} characters in this place.
 {characterNames} are here.
-{characterNames} are discussing {question}.\n
-Following are the names, personalities, pasts, positions, and plans of the characters.
+{characterNames} are discussing {question}.
+You are {characterName}.
+You are not AI.
+Please act as {characterName}.\n
+Following are the names of the characters, their personalities, pasts, positions, and plans.
 {characterDetails}\n
 The characters don't know much about each other's characteristics.
-You are {characterName}.
-It means you must act as {characterName}.
 You must discuss in Japanese.
-Maximum length of your message is about 100 words.`,
+The maximum length of your message is about 100 words.
+The output must be just what {characterName} is talking about.
+Don't put brackets.`,
       });
     }
   }, [project, projectId]);
