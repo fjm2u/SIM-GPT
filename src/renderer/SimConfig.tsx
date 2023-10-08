@@ -199,19 +199,17 @@ export default function SimConfig({
     if (project.prePrompt === '' || project.prePrompt === undefined) {
       setProject({
         ...project,
-        prePrompt: `There are {characterCount} characters in this place.
-{characterNames} are here.
-{characterNames} are discussing {question}.
-You are {characterName}.
-You are not AI.
-Please act as {characterName}.\n
-Following are the names of the characters, their personalities, pasts, positions, and plans.
+        prePrompt: `ここに {characterCount} 名のキャラクターがいます。
+{characterNames} です。
+あなたは {characterName} です。
+必ず {characterName} としてのみ振舞ってください。
+{characterNames} は {question} について話し合っています。
+以下はそれぞれのキャラクターの名前、性格、過去、現在の状態、そして将来の計画です。\n
 {characterDetails}\n
-The characters don't know much about each other's characteristics.
-You must discuss in Japanese.
-The maximum length of your message is about 100 words.
-The output must be just what {characterName} is talking about.
-Don't put brackets.`,
+これらのキャラクターは、互いのことをあまり知りません。
+あなたの返答の最大文字数は２８０字です。
+必ず {characterName} が話すことのみを返してください。
+鍵括弧をつけないでください`,
       });
     }
   }, [project, projectId]);

@@ -161,10 +161,10 @@ export default function Simulation({ projectId }: { projectId: string }) {
             (c) =>
               `
 ${c.name}
-- Personality ${c.personality}
-- Past ${c.past}
-- Status ${c.status}
-- Plan ${c.plan}\n`
+- 性格 ${c.personality}
+- 過去 ${c.past}
+- 現在の状態 ${c.status}
+- 将来の計画 ${c.plan}\n`
           )
         )
       );
@@ -225,14 +225,15 @@ ${c.name}
         );
         // eslint-disable-next-line no-await-in-loop
         const response = await openai.chat.completions.create({
-          // model: 'gpt-3.5-turbo',
-          model: 'gpt-4-0314',
+          model: 'gpt-3.5-turbo',
+          // model: 'gpt-4-0314',
           messages: sendMessages.map((m) => ({
             content: m.content,
             role: m.role,
           })),
           temperature: Number(project.temperature),
         });
+        // @Todo: 考える処理を実装する
         prevAssistantMessages.push({
           role: 'user',
           character: project.characters[i % project.characters.length].name,
